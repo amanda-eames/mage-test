@@ -34,7 +34,7 @@ default:
   DRUID_SCHEME: http
   DRUID_USER: user
   # DuckDB
-  DUCKDB_DATABASE: my_db
+  DUCKDB_DATABASE: database
   DUCKDB_SCHEMA: main
   # Google
   GOOGLE_SERVICE_ACC_KEY:
@@ -81,15 +81,12 @@ default:
   PINOT_USER: user
   # PostgresSQL
   POSTGRES_CONNECT_TIMEOUT: 10
-  POSTGRES_DBNAME: "{{ env_var('POSTGRES_DBNAME') }}"
-  #POSTGRES_SCHEMA: "{{ env_var('POSTGRES_SCHEMA') }}"
-  POSTGRES_USER: "{{ env_var('POSTGRES_USER') }}"
-  POSTGRES_PASSWORD: "{{ env_var('POSTGRES_PASSWORD') }}"
-  POSTGRES_HOST: "{{ env_var('POSTGRES_HOST') }}"
-  POSTGRES_PORT: "{{ env_var('POSTGRES_PORT') }}"
-  # duckdb
-  # DUCKDB_DATABASE: database
-  # DUCKDB_SCHEMA: main
+  POSTGRES_DBNAME: "{{ mage_secret_var('POSTGRES_DBNAME') }}"
+  POSTGRES_SCHEMA: public
+  POSTGRES_USER: "{{ mage_secret_var('POSTGRES_USER') }}"
+  POSTGRES_PASSWORD: "{{ mage_secret_var('POSTGRES_PASSWORD') }}"
+  POSTGRES_HOST: "{{ mage_secret_var('POSTGRES_HOST') }}"
+  POSTGRES_PORT: 5432
   # Qdrant
   QDRANT_COLLECTION: collection
   QDRANT_PATH: path
@@ -135,4 +132,3 @@ default:
   WEAVIATE_INSTANCE_API_KEY: YOUR-WEAVIATE-API-KEY
   WEAVIATE_INFERENCE_API_KEY: YOUR-OPENAI-API-KEY
   WEAVIATE_COLLECTION: collectionn_name
-
